@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
     <title>Jackpot</title>
 </head>
 <body>
-    How many to roll?
+    <h1>Outgunned</h1>
+    How many reels to roll?
+    <div class="reels">
+        <!-- display box with number of reels
+        2nd smaller row displaying grouped matches by number of matches -->
+        matches:
+    </div>
+    <div class="slidecontainer">
+        <div id="range_output"><p></p></div>
+        <input type="range" min="1" max="9" value="1" class="slider" id="myRange">
+        <!-- display range number here -->
+      </div>
     <button>Roll!</button>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
