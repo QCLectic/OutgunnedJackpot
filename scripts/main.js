@@ -14,11 +14,25 @@ const getRandomNumber= (min,max)=> {
 const rollDie= ()=> getRandomNumber(1,6);
 
 document.getElementById("rollDiceButton").addEventListener("click", function(){
-    const reel= rollDie();
-    let reelResult= reel;
-    document.getElementById("rollResult").innerHTML= '<p>'+ reelResult +'</p>';
-});
+    var numDice= document.getElementById("myRange").value;
+    var container=document.getElementById("rollDisplay");
+    var results = [];
 
-function rollDiceButton(){
-    return 
-};
+    container.innerHTML="";
+
+    for (var i= 0; i < numDice; i++){
+        let reelResult = rollDie();
+        results.push(reelResult);
+        container.innerHTML += '<span class="reels">'+ reelResult+ "</span>";
+    }
+     // Sort the results array by the number of matches
+    results.sort(function(a, b) {
+        var matchesA = results.filter(num => num === a).length;
+        var matchesB = results.filter(num => num === b).length;
+        return matchesB - matchesA;
+    });
+
+    // Display the final results in the rollMatch div
+    var rollMatchDiv = document.getElementById("rollMatch");
+    rollMatchDiv.innerHTML = results.map(num => '<span class="reels">' + num + '</span>').join("");
+});
