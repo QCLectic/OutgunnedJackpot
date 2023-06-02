@@ -13,14 +13,19 @@
     <div class="reels">
         <!-- display box with number of reels
         2nd smaller row displaying grouped matches by number of matches -->
-        matches:
+        <p>result of roll:</p>
+        <div id="rollResult"></div>
+        <p>display:</p>
+        <div class="rollDisplay"></div>
+        <p>matches:</p>
+        <div class="rollMatch"></div>
     </div>
-    <div class="slidecontainer">
+    <div class="slideContainer">
         <div id="range_output"><p></p></div>
         <input type="range" min="1" max="9" value="1" class="slider" id="myRange">
         <!-- display range number here -->
       </div>
-    <button>Roll!</button>
+    <button id="rollDiceButton">Roll!</button>
     <script src="scripts/main.js"></script>
 </body>
 </html>
