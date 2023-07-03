@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Outgunned Dice Roller</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="scripts/main.js"></script>
-
-</head>
-<body>
+    <link rel="stylesheet" href="main.css" />
+    <script defer src="scripts/main.js"></script>
+  </head>
+  <body>
     <h1>Outgunned</h1>
-</body>
+    <h2>Number of dice to roll:</h2>
+    <p id="diceNum">
+      <br />
+    </p>
+    <input
+      type="range"
+      id="diceNumRoll"
+      name="diceNum"
+      min="2"
+      max="9"
+      oninput="this.nextElementSibling.value = this.value"
+    />
+
+    <br/>
+    <button id="rollBtn">Roll</button>
+    <button id="reRollBtn">Re-Roll</button>
+    <button id="clearBtn">Reset</button>
+    <button id="allInBtn">All In!</button>
+    <h2>Result:</h2>
+    <h2>Number of Matches:</h2>
+  </body>
 </html>
