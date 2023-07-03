@@ -10,9 +10,7 @@
   <body>
     <h1>Outgunned</h1>
     <h2>Number of dice to roll:</h2>
-    <p id="diceNum">
-      <br />
-    </p>
+    <p id="diceNum">6</p>
     <input
       type="range"
       id="diceNumRoll"
@@ -22,12 +20,19 @@
       oninput="this.nextElementSibling.value = this.value"
     />
 
-    <br/>
-    <button id="rollBtn">Roll</button>
-    <button id="reRollBtn">Re-Roll</button>
-    <button id="clearBtn">Reset</button>
+    <br />
+    <div id="buttons">
+      <button id="rollBtn">Roll</button>
+      <button id="reRollBtn">Re-Roll</button>
+      <button id="clearBtn">Reset</button>
+    </div>
+    <br />
     <button id="allInBtn">All In!</button>
     <h2>Result:</h2>
-    <h2>Number of Matches:</h2>
+    <div id="resultDisplay"><br /></div>
+    <h2>Sorted:</h2>
+    <div id="sortedDice"><br /></div>
+    <h2>Outcome:</h2>
+    <div id="outcome"><br /></div>
   </body>
 </html>
