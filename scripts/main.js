@@ -92,16 +92,27 @@ rollBtn.addEventListener("click", function () {
 
   let outcomeArr = outcomeFun(rolledDice);
   outcome.textContent = outcomeArr;
+
+  if (outcomeArr === "Failure! Bummer :(") {
+    reRollBtn.disabled = true; // Disable the button if the outcome is "Failure! Bummer :("
+  } else {
+    reRollBtn.disabled = false; // Enable the button for other outcomes
+  }
   // outcome.textContent = passFail;
 });
 // option to reroll lesser matches if there is at least one match. otherwise declare failure.
 let reRollBtn = document.getElementById("reRollBtn");
+let allInBtn= document.getElementById("allInBtn");
 reRollBtn.addEventListener("click", function () {
-  //
+  allInBtn.disabled =false;
 });
 // if reroll results in additional match, declare greater success, or lose one success match
 // option to go all in, declare failure if no new match
 // reset state or restart game
-//
+let resetBtn= document.getElementById("resetBtn");
+resetBtn.addEventListener("click",function(){
+  allInBtn.disabled=true;
+  reRollBtn.disabled=true;
+});
 //
 //
