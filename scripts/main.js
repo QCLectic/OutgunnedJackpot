@@ -1,9 +1,10 @@
-// player selects number of dice to roll using input range  diceNumRoll
+/* eslint-disable no-undef */
+//diceNum'/ player selects number of dice to roll using input range  diceNumRoll
 // display number of dice to roll, between 2 and 9
-let diceNumRoll = document.getElementById("diceNumRoll");
-let diceNum = document.getElementById("diceNum");
+let diceNumRoll = document.getElementById('diceNumRoll');
+let diceNum = document.getElementById('diceNum');
 let rolledDice;
-diceNumRoll.addEventListener("input", function () {
+diceNumRoll.addEventListener('input', () => {
   let diceNumRollValue = diceNumRoll.value;
   diceNum.textContent = diceNumRollValue;
 });
@@ -13,7 +14,7 @@ function rollDie() {
   return Math.floor(Math.random() * 6) + 1;
 }
 
-let rollBtn = document.getElementById("rollBtn");
+let rollBtn = document.getElementById('rollBtn');
 
 function diceRoll(numRolls) {
   //let diceNumRollValue = diceNumRoll.value; in row below change numRolls from the value to left
@@ -26,9 +27,9 @@ function diceRoll(numRolls) {
 }
 
 // show results of roll
-let resultDisplay = document.getElementById("resultDisplay");
-let sortedDiceEm = document.getElementById("sortedDice");
-let outcome = document.getElementById("outcome");
+let resultDisplay = document.getElementById('resultDisplay');
+let sortedDiceEm = document.getElementById('sortedDice');
+let outcome = document.getElementById('outcome');
 // Sort the array based on the number of occurrences
 function diceSort(arr) {
   let countMap = new Map();
@@ -53,7 +54,6 @@ function outcomeFun(arr) {
       counter[element] = 1;
     }
   }
-  console.log(counter);
 
   let maxCount = 0;
   for (let value of Object.values(counter)) {
@@ -61,30 +61,30 @@ function outcomeFun(arr) {
       maxCount = value;
     }
   }
-  console.log(maxCount);
   switch (maxCount) {
     case 2:
-      return "Basic Success. Care to roll again?";
+      return 'Basic Success. Care to roll again?';
     case 3:
-      return "Critical Success. Care to roll again?";
+      return 'Critical Success. Care to roll again?';
     case 4:
-      return "Extreme Success!";
+      return 'Extreme Success!';
     case 5:
-      return "Impossible Success!";
+      return 'Impossible Success!';
     default:
-      if (maxCount>5){
-        return "Jackpot! You are driving the scene!"
-      }else {
-        return "Failure! Bummer :("
-      }
+      if (maxCount > 5) {
+        return 'Jackpot! You are driving the scene!';
+      } 
+        return 'Failure! Bummer :(';
+      
   }
 }
 
 //need to grab biggest value of array then based on value print result.
-// scratch that. need to see if at least one count in the array is greater than 2, then declaere the result. otherwise declare failure.
+// scratch that. 
+//need to see if at least one count in the array is greater than 2, then declaere the result. 
+//otherwise declare failure.
 
-
-rollBtn.addEventListener("click", function () {
+rollBtn.addEventListener('click', () => {
   rolledDice = diceRoll(diceNumRoll.value);
   resultDisplay.textContent = rolledDice;
 
@@ -94,20 +94,20 @@ rollBtn.addEventListener("click", function () {
   let outcomeArr = outcomeFun(rolledDice);
   outcome.textContent = outcomeArr;
 
-  if (outcomeArr === "Failure! Bummer :(") {
-    reRollBtn.disabled = true; // Disable the button if the outcome is "Failure! Bummer :("
+  if (outcomeArr === 'Failure! Bummer :(') {
+    reRollBtn.disabled = true; // Disable the button if the outcome is 'Failure! Bummer :('
   } else {
     reRollBtn.disabled = false; // Enable the button for other outcomes
   }
   // outcome.textContent = passFail;
 });
 // option to reroll lesser matches if there is at least one match. otherwise declare failure.
-let reRollBtn = document.getElementById("reRollBtn");
-let allInBtn = document.getElementById("allInBtn");
+let reRollBtn = document.getElementById('reRollBtn');
+let allInBtn = document.getElementById('allInBtn');
 let max = [];
 let notMax = [];
 
-reRollBtn.addEventListener("click", function () {
+reRollBtn.addEventListener('click', () => {
   max = [];
   notMax = [];
 
@@ -118,7 +118,7 @@ reRollBtn.addEventListener("click", function () {
   }
   let maxCount = Math.max(...Object.values(counter));
 
-  // Split rolledDice into max and notMax arrays
+  // Split rolledDice into max and notMax arrays because we want to reroll the notmax array
   for (let element of rolledDice.flat()) {
     if (counter[element] === maxCount) {
       max.push(element);
@@ -142,22 +142,26 @@ reRollBtn.addEventListener("click", function () {
   reRollBtn.disabled = true;
   //this needs to be conditional if outcome is not failure
   allInBtn.disabled = false;
-
 });
 // if reroll results in additional match, declare greater success, or lose one success match
+// i havent coded in the lose one match yet.
 // option to go all in, declare failure if no new match
+allInBtn.addEventListener('click', () => {
+  //  results in additional match, declare greater success, or lose one success match
+});
+
 // reset state or restart game
-let resetBtn = document.getElementById("resetBtn");
-resetBtn.addEventListener("click", function () {
+let resetBtn = document.getElementById('resetBtn');
+resetBtn.addEventListener('click', () => {
   //resets buttons to original state
   allInBtn.disabled = true;
   reRollBtn.disabled = true;
   // remove text
-  resultDisplay.textContent = "";
-  sortedDiceEm.textContent = "";
-  outcome.textContent = "";
+  resultDisplay.textContent = '';
+  sortedDiceEm.textContent = '';
+  outcome.textContent = '';
   // add line break to keep same spacing
-  let br = document.createElement("br");
+  let br = document.createElement('br');
   resultDisplay.appendChild(br.cloneNode());
   sortedDiceEm.appendChild(br.cloneNode());
   outcome.appendChild(br.cloneNode());
