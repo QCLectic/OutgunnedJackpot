@@ -1,4 +1,4 @@
-/* eslint-disable prefer-const */
+
 /* eslint-disable no-undef */
 //diceNum'/ player selects number of dice to roll using input range  diceNumRoll
 // display number of dice to roll, between 2 and 9
