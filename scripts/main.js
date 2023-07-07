@@ -34,7 +34,7 @@ const sortedDiceEm = document.getElementById('sortedDice');
 const outcome = document.getElementById('outcome');
 // Sort the array based on the number of occurrences
 function diceSort(arr) {
-  let countMap = new Map();
+  const countMap = new Map();
 
   // Count the occurrences of each number in the array
   for (const num of arr) {
@@ -48,7 +48,7 @@ function diceSort(arr) {
 }
 
 function outcomeFun(arr) {
-  let counter = {};
+  const counter = {};
   for (element of arr.flat()) {
     if (counter[element]) {
       counter[element] += 1;
@@ -58,7 +58,7 @@ function outcomeFun(arr) {
   }
 
   let maxCount = 0;
-  for (let value of Object.values(counter)) {
+  for (const value of Object.values(counter)) {
     if (value > maxCount) {
       maxCount = value;
     }
@@ -89,10 +89,10 @@ rollBtn.addEventListener('click', () => {
   rolledDice = diceRoll(diceNumRoll.value);
   resultDisplay.textContent = rolledDice;
 
-  let sortedDice = diceSort(rolledDice);
+  const sortedDice = diceSort(rolledDice);
   sortedDiceEm.textContent = sortedDice;
 
-  let outcomeArr = outcomeFun(rolledDice);
+  const outcomeArr = outcomeFun(rolledDice);
   outcome.textContent = outcomeArr;
 
   if (outcomeArr === 'Failure! Bummer :(') {
@@ -108,11 +108,11 @@ const allInBtn = document.getElementById('allInBtn');
 
 reRollBtn.addEventListener('click', () => {
   // Find the maximum count of occurrences
-  let counter = {};
-  for (let element of rolledDice.flat()) {
+  const counter = {};
+  for (const element of rolledDice.flat()) {
     counter[element] = (counter[element] || 0) + 1;
   }
-  let maxCount = Math.max(...Object.values(counter));
+  const maxCount = Math.max(...Object.values(counter));
 
   // Allow the user to choose which numbers to keep from the rolledDice
   let numbersToKeep = prompt(
@@ -130,24 +130,24 @@ reRollBtn.addEventListener('click', () => {
     .map((num) => parseInt(num.trim(), 10));
 
   // Filter the rolledDice array to keep the selected numbers
-  let selectedNumbers = rolledDice
+  const selectedNumbers = rolledDice
     .flat()
     .filter((num) => numbersToKeep.includes(num));
 
   // Roll the remaining numbers in the rolledDice array
-  let diceNumRollValue = rolledDice.flat().length - selectedNumbers.length;
-  let newNotMax = diceRoll(diceNumRollValue);
+  const diceNumRollValue = rolledDice.flat().length - selectedNumbers.length;
+  const newNotMax = diceRoll(diceNumRollValue);
 
   // Combine selectedNumbers and newNotMax arrays into reRolledDice
   reRolledDice = selectedNumbers.concat(newNotMax);
 
   // Evaluate if the reRolledDice provides a greater max value than rolledDice
   // Find the maximum count of occurrences in reRolledDice
-  let reRolledCounter = {};
+  const reRolledCounter = {};
   for (const element of reRolledDice) {
     reRolledCounter[element] = (reRolledCounter[element] || 0) + 1;
   }
-  let reRolledMaxCount = Math.max(...Object.values(reRolledCounter));
+  const reRolledMaxCount = Math.max(...Object.values(reRolledCounter));
 
   // Compare the max counts of rolledDice and reRolledDice
   if (reRolledMaxCount <= maxCount) {
@@ -192,11 +192,11 @@ reRollBtn.addEventListener('click', () => {
 // option to go all in, declare failure if no new match
 allInBtn.addEventListener('click', () => {
   //  results in additional match, declare greater success, or lose one success match
-  let reRolledcounter = {};
-  for (let element of rolledDice.flat()) {
+  const reRolledcounter = {};
+  for (const element of rolledDice.flat()) {
     reRolledcounter[element] = (reRolledcounter[element] || 0) + 1;
   }
-  let reRolledMaxCount = Math.max(...Object.values(reRolledcounter));
+  const reRolledMaxCount = Math.max(...Object.values(reRolledcounter));
 
   // Allow the user to choose which numbers to keep from the rolledDice
   let numbersToKeep = prompt(
@@ -214,28 +214,29 @@ allInBtn.addEventListener('click', () => {
     .map((num) => parseInt(num.trim(), 10));
 
   // Filter the rolledDice array to keep the selected numbers
-  let selectedNumbers = reRolledDice
+  const selectedNumbers = reRolledDice
     .flat()
     .filter((num) => numbersToKeep.includes(num));
 
   // Roll the remaining numbers in the rolledDice array
-  let diceNumRollValue = reRolledDice.flat().length - selectedNumbers.length;
-  let newNotMax = diceRoll(diceNumRollValue);
+  const diceNumRollValue = reRolledDice.flat().length - selectedNumbers.length;
+  const newNotMax = diceRoll(diceNumRollValue);
 
   // Combine selectedNumbers and newNotMax arrays into reRolledDice
-  let allInDice = selectedNumbers.concat(newNotMax);
+  const allInDice = selectedNumbers.concat(newNotMax);
 
   // Evaluate if the reRolledDice provides a greater max value than rolledDice
   // Find the maximum count of occurrences in reRolledDice
-  let allInCounter = {};
+  const allInCounter = {};
   for (const element of reRolledDice) {
     allInCounter[element] = (allInCounter[element] || 0) + 1;
   }
-  let allInMaxCount = Math.max(...Object.values(allInCounter));
+  const allInMaxCount = Math.max(...Object.values(allInCounter));
   if (allInMaxCount === reRolledMaxCount) {
     outcome.textContent = 'Failure! Better Luck Next Time.';
   } else {
     // Update the outcome based on reRolledDice
+    console.log(allInDice);
     outcome.textContent = outcomeFun(allInDice);
   }
   // Update the resultDisplay, sortedDiceEm, and outcome
