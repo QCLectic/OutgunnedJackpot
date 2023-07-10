@@ -8,7 +8,7 @@
     <script defer src="scripts/main.js"></script>
   </head>
   <body>
-    <h1>Outgunned</h1>
+    <h1>Dice Match!</h1>
     <h2>Number of dice to roll:</h2>
     <p id="diceNum">6</p>
     <input
@@ -35,5 +35,34 @@
     <div id="sortedDice"><br /></div>
     <h2>Outcome:</h2>
     <div id="outcome"><br /></div>
+    <p>
+      This dice roller is designed to be used with Two Little Mice games
+      including: Household Outgunned, etc.
+    </p>
+    <p>Dice Roller Rules:</p>
+    <ul>
+      <li>
+        Combine any attribute with any skill to get the number of dice to roll.
+        Minimum: 2 Maximum: 9
+      </li>
+      <li>Select the number of dice using the slider</li>
+      <li>Click Roll to roll the dice.</li>
+      <li>
+        Level of Success
+        <ul>
+          <li>No matches = Failure</li>
+          <li>2 numbers match= Basic Success.</li>
+          <li>3 numbers match= Critical Success</li>
+          <li>4 numbers match= Extreme Success</li>
+          <li>5 numbers match= Impossible Success</li>
+          <li>6+ numbers match= Jackpot!</li>
+        </ul>
+      </li>
+      <li>After rolling and having at least one success, you can pick a number to keep and re-roll the rest</li>
+      <li>On a re-roll, If you do not have more matches then you will go down a level of success.</li>
+      <li>After re-rolling, you can "Go All In", meaning you can pick a number to keep and re-roll the rest. if you do not get more matches of your chosen number, you will fail.</li>
+      <li>Click, Reset to start all over.</li>
+    </ul>
+    <p></p>
   </body>
 </html>
