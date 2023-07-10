@@ -1,5 +1,39 @@
-body{
-    background-color: steelblue;
-    color:white;
+body {
+  background-color: steelblue;
+  color: white;
+}
 
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+#buttons button {
+  flex: 1;
+}
+
+#allInBtn {
+  grid-column: span 3;
+}
+
+#resultDisplayBox,
+#sortedDiceBox {
+  flex-basis: 50%;
+}
+
+#resultDisplay {
+  order: 1;
+}
+
+#sortedDice {
+  order: 2;
+}
+
+@media (max-width: 600px) {
+  #resultDisplayBox,
+  #sortedDiceBox {
+    flex-basis: 100%;
+    order: initial;
+  }
 }
